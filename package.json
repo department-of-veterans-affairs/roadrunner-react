@@ -5,7 +5,9 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base public",
     "lint": "eslint --ext .js --ext .jsx src test",
-    "test": "karma start --single-run"
+    "test": "npm run test-js && npm run lint",
+    "test-js": "karma start --single-run",
+    "watch-test": "karma start"
   },
   "repository": {
     "type": "git",
