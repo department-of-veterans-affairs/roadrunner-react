@@ -9,6 +9,9 @@ var config = {
     filename: "bundle.js"
   },
   devtool: "#source-map",
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     loaders: [
       {
@@ -38,7 +41,20 @@ var config = {
           // Share polyfills between files.
           // TODO(awong): This is erroring out. Enable later.
 //          plugins: ['transform-runtime'],
-
+          plugins: [
+            ['react-transform', {
+              transforms: [
+                {
+                  transform: 'react-transform-hmr',
+                  imports: ['react'],
+                  locals: ['module'],
+                }, {
+                  transform: 'react-transform-catch-errors',
+                  imports: ['react', 'redbox-react'],
+                },
+              ],
+            }],
+          ],
           // Speed up compilation.
           cacheDirectory: true
         }

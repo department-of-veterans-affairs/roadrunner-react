@@ -1,16 +1,21 @@
 import React from 'react';
-import { Route, Router, browserHistory } from 'react-router';
 
-import LandingPage from './LandingPage';
+import Nav from './Nav';
 
 class RoadrunnerApp extends React.Component {
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route component={LandingPage} path="/"/>
-      </Router>
+      <div>
+        {this.props.children}
+        <hr/>
+        <Nav/>
+      </div>
     );
   }
 }
+
+RoadrunnerApp.propTypes = {
+  children: React.PropTypes.element
+};
 
 export default RoadrunnerApp;
